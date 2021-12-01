@@ -18,6 +18,7 @@ export class Partida implements Deserializable {
 
   deserialize(input: any): this {
     Object.assign(this, input);
+    this.jugador = new Jugador().deserialize(input.jugador);
     return this;
   }
 }
