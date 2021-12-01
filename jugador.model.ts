@@ -14,7 +14,7 @@ export class Jugador implements Deserializable {
         this.partida = Partida;
      }
 
-   deserialize(input: any) {
+   deserialize(input: any): Jugador {
     Object.assign(this, input);
     this.partida = new Partida().deserialize(input.partida);
     return this;
