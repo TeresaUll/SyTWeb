@@ -1,6 +1,18 @@
 const express = require('express');
-
+const cors = require('cors');
 const app = express();
 
-app.listen(3000);
-console.log('Server on port', 3000);
+require('./database');
+
+// settings
+app.set('port', process.env.PORT || 4000)
+
+// middlewares
+app.use(express.json());
+app.use(cors());
+
+// routes
+app.use('/api', require('./routes/index'));
+
+app.listen(app.get('port'));
+console.log('Server on port', app.get('port'));
